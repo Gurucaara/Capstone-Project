@@ -18,9 +18,7 @@ Creating a News Channel App , in which you will get daily updates what's going a
 - Sort News On Country Basis
 - DIfferent Category For News
 - Changing View Layout For News
-
-## User Roles
-* 
+ 
 
 ## Usage with Expo Go App
 
@@ -46,11 +44,3 @@ If you're having issues with Create React Native App, please make sure:
 
 If you've checked the documentation and currently open issues, please either [open a new GitHub issue](https://github.com/expo/create-react-native-app/issues/new) or ask a question on [Expo forums](https://forums.expo.io/c/help).
   
- ## Out of Scope
- 
- - Limitations of Project
-   - 1.
-   - 2.
-   - 3. 
-  
-
