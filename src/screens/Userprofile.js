@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button, Text, Alert } from "react-native";
+import { storeData } from "../uitl";
 
 export default function () {
   const [userName, setUserName] = useState("");
@@ -22,6 +23,12 @@ export default function () {
       navigation.replace("tabs");
       
     }
+    storeData({
+      userName,
+      userCountry,
+      userLanguage,
+      userAge,
+    });
   };
 
   return (

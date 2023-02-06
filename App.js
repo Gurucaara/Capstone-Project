@@ -12,11 +12,12 @@ import Sportsnews from "./src/tabs/Sportsnews";
 import Topnews from "./src/tabs/Topnews";
 import Profile from "./src/tabs/Profile"
 
-
+import { getData } from "./src/uitl";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -34,6 +35,7 @@ function Tabs() {
   return (
     <>
       <StatusBar style="light" />
+      
 
       <Tab.Navigator
         screenOptions={{
@@ -150,6 +152,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
+  const [data,setData] = useState({})
 
   useEffect(() => {
     async function prepare() {
@@ -162,8 +165,16 @@ export default function App() {
         setAppIsReady(true);
       }
     }
-
     prepare();
+  }, []);
+
+  useEffect(() => {
+    getData().then((res) => {
+      if (res) {
+        let response = JSON.parse(res);
+        setData(response);
+      }
+    });
   }, []);
 
   const onLayoutRootView = useCallback(async () => {
