@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button, Text, Alert } from "react-native";
 
@@ -7,6 +8,7 @@ export default function () {
   const [userLanguage, setUserLanguage] = useState("");
   const [userAge, setUserAge] = useState("");
   const [error, setError] = useState("");
+  const navigation = useNavigation();
 
   const handleSubmit = () => {
     if (!userName || !userCountry || !userLanguage || !userAge) {
@@ -17,6 +19,8 @@ export default function () {
       setUserLanguage("");
       setUserAge("");
       alert("User data saved successfully");
+      navigation.replace("tabs");
+      
     }
   };
 
@@ -63,7 +67,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "skyblue",
-    width: "100%",
   },
   label: {
     fontSize: 16,
