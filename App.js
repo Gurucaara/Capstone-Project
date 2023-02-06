@@ -1,12 +1,12 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
-import Entypo from '@expo/vector-icons/Entypo';
+import React, { useCallback, useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
+import Entypo from "@expo/vector-icons/Entypo";
+import Userprofile from "./src/screens/Userprofile";
 
 SplashScreen.preventAutoHideAsync();
-
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -15,7 +15,7 @@ export default function App() {
     async function prepare() {
       try {
         await Font.loadAsync(Entypo.font);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 3000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -37,10 +37,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}
-    onLayout={onLayoutRootView}>
-      <Text>Home Page</Text>
+    <View style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="auto" />
+      <Userprofile />
     </View>
   );
 }
@@ -48,8 +47,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
