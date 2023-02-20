@@ -13,7 +13,7 @@ import {
     return (
       <>
         <View>
-          <Text>Health News Tab</Text>
+        <Text>Easy Navigation B/W tabs</Text>
         </View>
       </>
     );
