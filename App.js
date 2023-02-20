@@ -32,7 +32,7 @@ function UserStack() {
 function Tabs() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
 
       <Tab.Navigator
         screenOptions={{
@@ -46,10 +46,10 @@ function Tabs() {
           component={Topnews}
           options={{
             headerStyle: {
-              backgroundColor: "antiquewhite",
+              backgroundColor: "pink",
             },
             headerTintColor: "black",
-            title: "Top",
+            title: "Top News",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="order-bool-ascending"
@@ -65,13 +65,13 @@ function Tabs() {
           component={Businessnews}
           options={{
             headerStyle: {
-              backgroundColor: "antiquewhite",
+              backgroundColor: "aqua",
             },
             headerTintColor: "black",
             title: "Business",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
-                name="bookmark-check"
+                name="briefcase"
                 color={"skyblue"}
                 size={30}
               />
@@ -84,13 +84,13 @@ function Tabs() {
           component={Healthnews}
           options={{
             headerStyle: {
-              backgroundColor: "antiquewhite",
+              backgroundColor: "gold",
             },
             headerTintColor: "black",
             title: "Health",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
-                name="bookmark-check"
+                name="heart"
                 color={"skyblue"}
                 size={30}
               />
@@ -104,16 +104,12 @@ function Tabs() {
           component={Sportsnews}
           options={{
             headerStyle: {
-              backgroundColor: "antiquewhite",
+              backgroundColor: "orange",
             },
             headerTintColor: "black",
             title: "Sports",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="bookmark-check"
-                color={"skyblue"}
-                size={30}
-              />
+              <MaterialCommunityIcons name="run" color={"skyblue"} size={30} />
             ),
             headerShown: true,
           }}
@@ -124,13 +120,13 @@ function Tabs() {
           component={Profile}
           options={{
             headerStyle: {
-              backgroundColor: "antiquewhite",
+              backgroundColor: "aquamarine",
             },
             headerTintColor: "black",
             title: "Profile",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
-                name="bookmark-check"
+                name="account"
                 color={"skyblue"}
                 size={30}
               />
