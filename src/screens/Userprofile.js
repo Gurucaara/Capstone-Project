@@ -1,7 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
+import Picker from "react-native-picker";
+import { SelectList } from "react-native-dropdown-select-list";
 import { StyleSheet, View, TextInput, Button, Text, Alert } from "react-native";
 import { storeData } from "../uitl";
+import DropDownPicker from "react-native-dropdown-picker";
 
 export default function () {
   const [userName, setUserName] = useState("");
@@ -14,15 +17,20 @@ export default function () {
   const handleSubmit = () => {
     if (!userName || !userCountry || !userLanguage || !userAge) {
       Alert.alert("Error", "All fields are required");
-    } else {
-      setUserName("");
-      setUserCountry("");
-      setUserLanguage("");
-      setUserAge("");
-      alert("User data saved successfully");
-      navigation.replace("tabs");
-      
+      return;
     }
+
+    if (isNaN(userAge)) {
+      Alert.alert("Please enter a valid age");
+      return;
+    }
+    setUserName("");
+    setUserCountry("");
+    setUserLanguage("");
+    setUserAge("");
+    alert("User data saved successfully");
+    navigation.replace("tabs");
+
     storeData({
       userName,
       userCountry,
@@ -30,6 +38,16 @@ export default function () {
       userAge,
     });
   };
+
+  const [selected, setSelected] = React.useState("");
+  const data = [
+    { key: "1", value: "ca" },
+    { key: "2", value: "us" },
+    { key: "3", value: "in" },
+    { key: "4", value: "nz" },
+    { key: "5", value: "au" },
+    { key: "6", value: "ch" },
+  ];
 
   return (
     <View style={styles.container}>
@@ -41,11 +59,10 @@ export default function () {
         value={userName}
       />
       <Text style={styles.label}>Country:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your country"
-        onChangeText={setUserCountry}
-        value={userCountry}
+      <SelectList
+        setSelected={(val) => setUserCountry(val)}
+        data={data}
+        save="value"
       />
       <Text style={styles.label}>Language:</Text>
       <TextInput
@@ -61,6 +78,7 @@ export default function () {
         onChangeText={setUserAge}
         value={userAge}
         keyboardType="number-pad"
+        maxLength={3}
       />
       <Button title="Submit" onPress={handleSubmit} />
     </View>

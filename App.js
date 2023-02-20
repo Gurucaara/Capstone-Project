@@ -10,14 +10,13 @@ import Businessnews from "./src/tabs/Businessnews";
 import Healthnews from "./src/tabs/Healthnews";
 import Sportsnews from "./src/tabs/Sportsnews";
 import Topnews from "./src/tabs/Topnews";
-import Profile from "./src/tabs/Profile"
+import Profile from "./src/tabs/Profile";
 
 import { getData } from "./src/uitl";
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -30,12 +29,10 @@ function UserStack() {
   );
 }
 
-
 function Tabs() {
   return (
     <>
       <StatusBar style="light" />
-      
 
       <Tab.Navigator
         screenOptions={{
@@ -146,27 +143,24 @@ function Tabs() {
   );
 }
 
-
-
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const [data,setData] = useState({})
+  const [data, setData] = useState({});
 
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await Font.loadAsync(Entypo.font);
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-      } catch (e) {
-        console.warn(e);
-      } finally {
-        setAppIsReady(true);
-      }
-    }
-    prepare();
-  }, []);
+  // useEffect(() => {
+  //   async function prepare() {
+  //     try {
+  //       await new Promise((resolve) => setTimeout(resolve, 2000));
+  //     } catch (e) {
+  //       console.warn(e);
+  //     } finally {
+  //       setAppIsReady(true);
+  //     }
+  //   }
+  //   prepare();
+  // }, []);
 
   useEffect(() => {
     getData().then((res) => {
@@ -177,19 +171,19 @@ export default function App() {
     });
   }, []);
 
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      await SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (appIsReady) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [appIsReady]);
 
-  if (!appIsReady) {
-    return null;
-  }
+  // if (!appIsReady) {
+  //   return null;
+  // }
 
   return (
-  <View style={{flex:1}} onLayout={onLayoutRootView}>
-     {/* // <View style={styles.container} onLayout={onLayoutRootView}> */}
+    <View style={{ flex: 1 }}>
+      {/* // <View style={styles.container} onLayout={onLayoutRootView}> */}
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -211,10 +205,7 @@ export default function App() {
             }}
           />
         </Stack.Navigator>
-        
       </NavigationContainer>
     </View>
- 
   );
 }
-
