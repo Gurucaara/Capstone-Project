@@ -1,7 +1,8 @@
-import { API_KEY, endpoint, country } from "../config/config";
+import { API_KEY, endpoint } from "../config/config";
 // import axios from 'axios';
 
-export async function services(category = "general") {
+export async function services(category = "general", country) {
+  console.log("HI==>.>", country);
   let articles = await fetch(
     `${endpoint}?country=${country}&category=${category}`,
     {
@@ -13,7 +14,6 @@ export async function services(category = "general") {
       // mode: 'no-cors'
     }
   );
-
   let result = await articles.json();
   articles = null;
 

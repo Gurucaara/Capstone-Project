@@ -51,7 +51,7 @@ export default function () {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Name:</Text>\
+      <Text style={styles.label}>Name:</Text>
       <TextInput
         style={styles.input}
         placeholder="Enter your name"

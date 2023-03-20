@@ -11,18 +11,28 @@ import {
 } from "native-base";
 import { services } from "../../services/services";
 import moment from "moment";
+import { getData } from "../uitl";
 // import axios from 'axios';
 
 export default function () {
   const [newsData, setNewsData] = useState([]);
+
   useEffect(() => {
-    services("general")
-      .then((data) => {
-        setNewsData(data);
-      })
-      .catch((error) => {
-        console.log("try again: ", error);
-      });
+    getData().then((res) => {
+      if (res) {
+        let response = JSON.parse(res);
+        services(
+          "General",
+          response.userCountry.toLocaleLowerCase().substring(0, 2)
+        )
+          .then((data) => {
+            setNewsData(data);
+          })
+          .catch((error) => {
+            console.log("try again: ", error);
+          });
+      }
+    });
   }, []);
 
   return (

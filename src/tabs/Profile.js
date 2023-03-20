@@ -17,7 +17,6 @@ export default function () {
     });
   }, []);
 
-
   const handleSubmit = () => {
     if (!userName || !userCountry || !userLanguage || !userAge) {
       Alert.alert("Error", "All fields are required");
@@ -55,7 +54,6 @@ export default function () {
     { key: "2", value: "French" },
   ];
 
-
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require("../Assets/user.png")} />
@@ -67,37 +65,37 @@ export default function () {
         <View style={styles.row}>
           <Text style={styles.label}>Country:</Text>
           <SelectList
-        setSelected={(val) => setUserCountry(val)}
-        data={data}
-        save="value"
-        placeholder={userData?.userCountry}
-        boxStyles={{
-          width: 100,
+            setSelected={(val) => setUserCountry(val)}
+            data={data}
+            save="value"
+            placeholder={userData?.userCountry}
+            boxStyles={{
+              width: 100,
 
-          alignself: "center",
-          paddingHorizontal: 5,
-          borderColor: "white",
-          marginTop: 10,
-        }}
-        dropdownStyles={{ height: 160 }}
-      />
+              alignself: "center",
+              paddingHorizontal: 5,
+              borderColor: "white",
+              marginTop: 10,
+            }}
+            dropdownStyles={{ height: 160 }}
+          />
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Language:</Text>
           <SelectList
-        setSelected={(val) => setUserLanguage(val)}
-        placeholder={userData?.userLanguage}
-        data={languageData}
-        save="value"
-        boxStyles={{
-          width: 100,
-          alignself: "center",
-          paddingHorizontal: 5,
-          borderColor: "white",
-          marginTop: 10,
-        }}
-        dropdownStyles={{ height: 100 }}
-      />
+            setSelected={(val) => setUserLanguage(val)}
+            placeholder={userData?.userLanguage}
+            data={languageData}
+            save="value"
+            boxStyles={{
+              width: 100,
+              alignself: "center",
+              paddingHorizontal: 5,
+              borderColor: "white",
+              marginTop: 10,
+            }}
+            dropdownStyles={{ height: 100 }}
+          />
         </View>
         <View style={styles.row}>
           <Text style={styles.label}>Age:</Text>
