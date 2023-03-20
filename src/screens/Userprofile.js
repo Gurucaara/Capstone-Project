@@ -1,10 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import Picker from "react-native-picker";
 import { SelectList } from "react-native-dropdown-select-list";
 import { StyleSheet, View, TextInput, Button, Text, Alert } from "react-native";
 import { storeData } from "../uitl";
-import DropDownPicker from "react-native-dropdown-picker";
 
 export default function () {
   const [userName, setUserName] = useState("");
@@ -41,12 +39,14 @@ export default function () {
 
   const [selected, setSelected] = React.useState("");
   const data = [
-    { key: "1", value: "ca" },
-    { key: "2", value: "us" },
-    { key: "3", value: "in" },
-    { key: "4", value: "nz" },
-    { key: "5", value: "au" },
-    { key: "6", value: "ch" },
+    { key: "1", value: "Canada" },
+    { key: "2", value: "USA" },
+    { key: "3", value: "India" },
+    { key: "4", value: "Australia" },
+  ];
+  const languageData = [
+    { key: "1", value: "English" },
+    { key: "2", value: "French" },
   ];
 
   return (
@@ -63,13 +63,29 @@ export default function () {
         setSelected={(val) => setUserCountry(val)}
         data={data}
         save="value"
+        boxStyles={{
+          width: 375,
+
+          alignself: "center",
+          paddingHorizontal: 10,
+          borderColor: "white",
+          marginTop: 10,
+        }}
+        dropdownStyles={{ height: 160 }}
       />
       <Text style={styles.label}>Language:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your preferred language"
-        onChangeText={setUserLanguage}
-        value={userLanguage}
+      <SelectList
+        setSelected={(val) => setUserLanguage(val)}
+        data={languageData}
+        save="value"
+        boxStyles={{
+          width: 375,
+          alignself: "center",
+          paddingHorizontal: 10,
+          borderColor: "white",
+          marginTop: 10,
+        }}
+        dropdownStyles={{ height: 100 }}
       />
       <Text style={styles.label}>Age:</Text>
       <TextInput

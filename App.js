@@ -1,22 +1,17 @@
+import "react-native-gesture-handler";
 import React, { useCallback, useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
-import Entypo from "@expo/vector-icons/Entypo";
+import { StyleSheet, Image, View } from "react-native";
 import Userprofile from "./src/screens/Userprofile";
-
 import Businessnews from "./src/tabs/Businessnews";
 import Healthnews from "./src/tabs/Healthnews";
 import Sportsnews from "./src/tabs/Sportsnews";
 import Topnews from "./src/tabs/Topnews";
 import Profile from "./src/tabs/Profile";
-
 import { getData } from "./src/uitl";
 import { NavigationContainer } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -32,8 +27,6 @@ function UserStack() {
 function Tabs() {
   return (
     <>
-      <StatusBar style="dark" />
-
       <Tab.Navigator
         screenOptions={{
           headerStyle: {
@@ -46,53 +39,56 @@ function Tabs() {
           component={Topnews}
           options={{
             headerStyle: {
-              backgroundColor: "pink",
+              backgroundColor: "aqua",
             },
             headerTintColor: "black",
             title: "Top News",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="order-bool-ascending"
-                color={"skyblue"}
-                size={30}
+              <Image
+                style={{ height: 30, width: 30, resizeMode: "contain" }}
+                source={require("./src/Assets/newspaper-folded.png")}
               />
             ),
           }}
         />
 
         <Tab.Screen
-          name="Businessnews"
+          name="Business"
           component={Businessnews}
           options={{
             headerStyle: {
               backgroundColor: "aqua",
             },
             headerTintColor: "black",
-            title: "Business",
+            // title: "Business",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="briefcase"
-                color={"skyblue"}
-                size={30}
+              // <MaterialCommunityIcons
+              //   name="git"
+              //   color={"skyblue"}
+              //   size={30}
+              // />
+
+              <Image
+                style={{ height: 30, width: 30, resizeMode: "contain" }}
+                source={require("./src/Assets/briefcase.png")}
               />
             ),
           }}
         />
 
         <Tab.Screen
-          name="Healthnews"
+          name="Health"
           component={Healthnews}
           options={{
             headerStyle: {
-              backgroundColor: "gold",
+              backgroundColor: "aqua",
             },
             headerTintColor: "black",
             title: "Health",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="heart"
-                color={"skyblue"}
-                size={30}
+              <Image
+                style={{ height: 30, width: 30, resizeMode: "contain" }}
+                source={require("./src/Assets/health-insurance.png")}
               />
             ),
             headerShown: true,
@@ -100,16 +96,19 @@ function Tabs() {
         />
 
         <Tab.Screen
-          name="Sportsnews"
+          name="Sports"
           component={Sportsnews}
           options={{
             headerStyle: {
-              backgroundColor: "orange",
+              backgroundColor: "aqua",
             },
             headerTintColor: "black",
             title: "Sports",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="run" color={"skyblue"} size={30} />
+              <Image
+                style={{ height: 30, width: 30, resizeMode: "contain" }}
+                source={require("./src/Assets/volleyball.png")}
+              />
             ),
             headerShown: true,
           }}
@@ -120,15 +119,14 @@ function Tabs() {
           component={Profile}
           options={{
             headerStyle: {
-              backgroundColor: "aquamarine",
+              backgroundColor: "aqua",
             },
             headerTintColor: "black",
             title: "Profile",
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons
-                name="account"
-                color={"skyblue"}
-                size={30}
+              <Image
+                style={{ height: 30, width: 30, resizeMode: "contain" }}
+                source={require("./src/Assets/user.png")}
               />
             ),
             headerShown: true,
@@ -139,24 +137,9 @@ function Tabs() {
   );
 }
 
-// SplashScreen.preventAutoHideAsync();
-
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [data, setData] = useState({});
-
-  // useEffect(() => {
-  //   async function prepare() {
-  //     try {
-  //       await new Promise((resolve) => setTimeout(resolve, 2000));
-  //     } catch (e) {
-  //       console.warn(e);
-  //     } finally {
-  //       setAppIsReady(true);
-  //     }
-  //   }
-  //   prepare();
-  // }, []);
 
   useEffect(() => {
     getData().then((res) => {
@@ -167,19 +150,8 @@ export default function App() {
     });
   }, []);
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (appIsReady) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [appIsReady]);
-
-  // if (!appIsReady) {
-  //   return null;
-  // }
-
   return (
     <View style={{ flex: 1 }}>
-      {/* // <View style={styles.container} onLayout={onLayoutRootView}> */}
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
