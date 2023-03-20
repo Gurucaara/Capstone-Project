@@ -135,10 +135,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 19,
+    fontSize: 20,
   },
   date: {
-    fontSize: 19,
+    fontSize: 20,
   },
   description: {
     padding: 20,
